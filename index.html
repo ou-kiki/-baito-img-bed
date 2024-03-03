@@ -15,15 +15,17 @@
 <body>
 
 <div id="fullScreen" class="w-full h-full pointer-events-auto w-[21rem] rounded-lg bg-white p-4 text-[0.8125rem] leading-5 shadow-xl shadow-black/5 hover:bg-slate-50 ring-1 ring-slate-700/10">
-  <h3 class="text-center">Telegraph Image Hosting</h3>
-  <p class="text-center text-muted">Free</p>
+  <div class="text-center">
+    <h2 class="text-[#fbcda5] text-2xl font-bold">Telegraph Image Hosting</h2>
+    <p class="text-lg/relaxed py-4">Free</p>
+  </div>
 
   <label for="fileInput" id="upload" class="mt-4 w-3/5 max-w-[800px] mx-auto aspect-[7/3] flex flex-col items-center justify-center rounded-lg  border-4 border-dashed border-gray-500 hover:border-gray-800 group cursor-pointer" title="Supported formats: Images, videos, GIFs">
     <span class="text-xs text-gray-500 group-hover:text-gray-800 md:text-lg">Drag & Drop your files or Browse</span>
     <input hidden id="fileInput" type="file" name="file" multiple accept="image/*, video/*" />
   </label>
 
-  <div id="uploadStatus" style="margin-top: 20px;"></div>
+  <div id="uploadStatus" class="mt-[20px]"></div>
 
 </div>
 
