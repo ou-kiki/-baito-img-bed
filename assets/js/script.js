@@ -19,8 +19,11 @@ function onDrop(event) {
 
 
 function handleUpload() {
-  const file = fileInput?.files?.[0];
-  if (file) uploadImage(file);
+  if (!fileInput?.files?.length) return;
+  for (let i = 0; i < fileInput.files.length; i++) {
+    const file = fileInput.files[i];
+    if (file) uploadImage(file);
+  }
 }
 
 async function copyImageUrl() {
@@ -89,6 +92,8 @@ function uploadImage(file) {
 
 function setUploadStatus(content) {
   if (uploadStatus) {
-    uploadStatus.innerHTML = content
+    uploadStatus.innerHTML += content
+    return
   }
+  uploadStatus.innerHTML = ""
 }
