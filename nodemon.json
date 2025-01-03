@@ -1,0 +1,20 @@
+{
+    "ignore": [
+        "**/uploads",
+        "**/temp",
+        "**/data",
+        "**/sessions",
+        "db.json",
+        ".env",
+        "*.log",
+        "node_modules"
+    ],
+    "watch": [
+        "server.js",
+        "routes/*.js",
+        "utils/*.js"
+    ],
+    "ext": "js",
+    "verbose": true,
+    "delay": 2500
+} 
