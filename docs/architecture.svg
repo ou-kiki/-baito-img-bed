@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+    <!-- 背景 -->
+    <rect width="800" height="600" fill="#f8f9fa"/>
+    
+    <!-- 标题 -->
+    <text x="400" y="50" text-anchor="middle" font-size="24" font-weight="bold" fill="#212529">ImgBed 系统架构图</text>
+    
+    <!-- 客户端 -->
+    <rect x="50" y="150" width="120" height="60" rx="5" fill="#007bff" opacity="0.8"/>
+    <text x="110" y="185" text-anchor="middle" fill="white">客户端</text>
+    
+    <!-- Cloudflare Tunnel -->
+    <rect x="250" y="150" width="120" height="60" rx="5" fill="#fd7e14" opacity="0.8"/>
+    <text x="310" y="185" text-anchor="middle" fill="white">Cloudflare Tunnel</text>
+    
+    <!-- 树莓派服务器 -->
+    <rect x="450" y="150" width="120" height="60" rx="5" fill="#28a745" opacity="0.8"/>
+    <text x="510" y="185" text-anchor="middle" fill="white">树莓派服务器</text>
+    
+    <!-- Telegram API -->
+    <rect x="650" y="150" width="120" height="60" rx="5" fill="#17a2b8" opacity="0.8"/>
+    <text x="710" y="185" text-anchor="middle" fill="white">Telegram API</text>
+    
+    <!-- 本地存储 -->
+    <rect x="450" y="300" width="120" height="60" rx="5" fill="#6c757d" opacity="0.8"/>
+    <text x="510" y="335" text-anchor="middle" fill="white">本地存储</text>
+    
+    <!-- 连接线 -->
+    <line x1="170" y1="180" x2="250" y2="180" stroke="#212529" stroke-width="2"/>
+    <line x1="370" y1="180" x2="450" y2="180" stroke="#212529" stroke-width="2"/>
+    <line x1="570" y1="180" x2="650" y2="180" stroke="#212529" stroke-width="2"/>
+    <line x1="510" y1="210" x2="510" y2="300" stroke="#212529" stroke-width="2"/>
+    
+    <!-- 箭头 -->
+    <polygon points="245,175 255,180 245,185" fill="#212529"/>
+    <polygon points="445,175 455,180 445,185" fill="#212529"/>
+    <polygon points="645,175 655,180 645,185" fill="#212529"/>
+    <polygon points="505,295 510,305 515,295" fill="#212529"/>
+    
+    <!-- 图例 -->
+    <rect x="50" y="400" width="700" height="150" rx="5" fill="white" stroke="#dee2e6"/>
+    <text x="70" y="430" font-size="16" font-weight="bold">图例说明：</text>
+    <circle cx="70" y="460" r="5" fill="#007bff"/>
+    <text x="90" y="465">客户端：Web 浏览器或其他客户端应用</text>
+    <circle cx="70" y="490" r="5" fill="#fd7e14"/>
+    <text x="90" y="495">Cloudflare Tunnel：提供安全的公网访问</text>
+    <circle cx="70" y="520" r="5" fill="#28a745"/>
+    <text x="90" y="525">树莓派服务器：运行 Node.js 应用</text>
+    <circle cx="400" y="460" r="5" fill="#17a2b8"/>
+    <text x="420" y="465">Telegram API：提供图片存储服务</text>
+    <circle cx="400" y="490" r="5" fill="#6c757d"/>
+    <text x="420" y="495">本地存储：数据库和临时文件存储</text>
+</svg> 
