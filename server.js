@@ -51,8 +51,22 @@ app.use(session({
 
 // 安全中间件
 app.use(helmet({
-    contentSecurityPolicy: false,
-    crossOriginEmbedderPolicy: false
+    contentSecurityPolicy: {
+        directives: {
+            defaultSrc: ["'self'"],
+            imgSrc: ["'self'", "data:", "blob:", "*"],
+            scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "cdn.jsdelivr.net"],
+            styleSrc: ["'self'", "'unsafe-inline'", "cdn.jsdelivr.net"],
+            fontSrc: ["'self'", "cdn.jsdelivr.net"],
+            connectSrc: ["'self'", "*"],
+            frameSrc: ["'self'"],
+            objectSrc: ["'none'"],
+            upgradeInsecureRequests: []
+        }
+    },
+    crossOriginEmbedderPolicy: false,
+    crossOriginResourcePolicy: { policy: "cross-origin" },
+    crossOriginOpenerPolicy: { policy: "same-origin" }
 }));
 
 // 压缩中间件
@@ -110,8 +124,14 @@ const limiter = rateLimit({
 // 应用限流
 app.use('/api/', limiter);
 
-// 启用 CORS
-app.use(cors());
+// 配置 CORS
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
+    maxAge: 86400
+}));
 
 // 添加数据库和 bot 实例到请求对象
 app.use((req, res, next) => {
@@ -254,14 +274,14 @@ app.get('/image/:id', async (req, res) => {
             throw new Error('Failed to fetch image');
         }
 
-        // 设置缓存控制和安全头
+        // 设置跨域和缓存控制头
         res.set({
-            'Cache-Control': 'private, max-age=3600',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Cache-Control': 'public, max-age=31536000',
             'Content-Type': response.headers.get('content-type'),
-            'Content-Security-Policy': "default-src 'self'",
-            'X-Content-Type-Options': 'nosniff',
-            'X-Frame-Options': 'DENY',
-            'X-XSS-Protection': '1; mode=block'
+            'X-Content-Type-Options': 'nosniff'
         });
 
         // 流式传输响应

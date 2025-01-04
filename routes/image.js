@@ -8,9 +8,28 @@ const fs = require('fs');
 
 // 缓存控制中间件
 const cacheControl = (req, res, next) => {
-    res.set('Cache-Control', 'public, max-age=31536000'); // 1年
+    res.set({
+        'Cache-Control': 'public, max-age=31536000',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        'Cross-Origin-Resource-Policy': 'cross-origin',
+        'Cross-Origin-Embedder-Policy': 'require-corp',
+        'Timing-Allow-Origin': '*'
+    });
     next();
 };
+
+// 处理 OPTIONS 请求
+router.options('/:id', (req, res) => {
+    res.set({
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        'Access-Control-Max-Age': '86400',
+        'Cross-Origin-Resource-Policy': 'cross-origin'
+    }).status(204).end();
+});
 
 // 图片处理中间件
 const processImage = async (req, res, next) => {
